@@ -32,7 +32,7 @@ KAPI void log_output(log_level level, const char* message, ...);
 
 #ifndef KERROR
 // Logs a error-level message
-#define KERROR(message, ...) log_output(LOG_LEVEL_WARN, message, ##__VA_ARGS__);
+#define KERROR(message, ...) log_output(LOG_LEVEL_ERROR, message, ##__VA_ARGS__);
 #endif
 
 #if LOG_WARN_ENABLED == 1
