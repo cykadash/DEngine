@@ -2,23 +2,21 @@
 #include <core/asserts.h>
 
 // TODO: Test
-#include <platform/platform.h>
+#include <core/application.h>
 
 int main(void) {
-    KFATAL("yo mama fat %f", 2.71f);
-    KERROR("test: %f", 2.71f);
-    KWARN("test: %f", 2.71f);
-    KINFO("test: %f", 2.71f);
-    KDEBUG("test: %f", 2.71f);
-    KTRACE("test: %f", 2.71f);
+    
+    application_config config;
+    config.start_pos_x = 100;
+    config.start_pos_y = 100;
+    config.start_width = 1280;
+    config.start_height = 720;
+    config.name = "Dash Engine Testbed";
 
-    platform_state state;
-    if (platform_startup(&state, "Dash Engine Testbed", 100, 100, 1280, 720)) {
-        while (TRUE) {
-            platform_pump_messages(&state);
-        }
-    }
-    platform_shutdown(&state);
+    application_create(&config);
+
+    application_run();
+    
 
     return 0;
 }
